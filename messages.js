@@ -38,7 +38,7 @@ const createResultMessageBulle = (channelId, userA, userB, scoreA, scoreB) => {
                 "type": "section",
                 "text": {
                     "type": "mrkdwn",
-                    "text": `<@${userA}> just won ${scoreA}-${scoreB} against <@${userB}> 🫠`
+                    "text": `<@${userA}> just won ${scoreA}-${scoreB} against <@${userB}> :melting_face:`
                 },
                 "accessory": {
                     "type": "image",
