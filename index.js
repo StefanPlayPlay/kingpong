@@ -2,7 +2,8 @@ let express = require('express')
 let http = require('http')
 const bodyParser = require('body-parser');
 let dotenv =  require('dotenv');
-let modals = require('./modals')
+const modals = require('./modals')
+const messages = required('./messages')
 
 dotenv.config();
 
@@ -33,67 +34,17 @@ app.post('/interact', async (req, res) => {
         const scoreB = data.view.state.values.user_b_score.user_b_score_value.value;
 
         console.log(userA, userB, scoreA, scoreB);
+        // TO PUT AGAIN : insert to DB 
 
 // Open a direct message channel with the user
         const conversation = await slack.conversations.open({
             users: userB,
         });
-
-        let mtext = 'Do you confirm that you won a ping-pong match against <@'+userA+'> ('+scoreB+'-'+scoreA+')?';
-        if (scoreA > scoreB) {
-            mtext = 'Do you confirm that <@' + userA + '> won a ping-pong match against you (' + scoreA + '-' + scoreB + ')?';
-        }
-// Send a message with the button attachment
-//         await slack.chat.postMessage({
-//             channel: conversation.channel.id,
-//             text: mtext,
-//             attachments: [
-//                 {
-//                     "callback_id": "wopr_game",
-//                     "color": "#3AA3E3",
-//                     "attachment_type": "default",
-//                     "actions": [
-//                         {
-//                             "name": "game",
-//                             "text": "Thermonuclear War",
-//                             "style": "danger",
-//                             "type": "button",
-//                             "value": "war",
-//                             "confirm": {
-//                                 "title": "Are you sure?",
-//                                 "text": "Wouldn't you prefer a good game of chess?",
-//                                 "ok_text": "Yes",
-//                                 "dismiss_text": "No"
-//                             }
-//                         }
-//                     ]
-//                 }
-//             ]
-//         });
         const documentId = 'cccccccc';
-        await slack.chat.postMessage({
-            channel: conversation.channel.id,
-            text: 'Hello',
-            "attachments": [
-                {
-                    "text": mtext,
-                    "callback_id": "confirm_match",
-                    "color": "#3AA3E3",
-                    "attachment_type": "default",
-                    "actions": [
-                        {
-                            "name": "game",
-                            "text": "Yes",
-                            "type": "button",
-                            "value": documentId
-                        }
-                    ]
-                }
-            ]
-        })
+        const confirmMessage = messages.createConfirmMessage(conversation.channel.id,doc.id,userA,userB,scoreA,scoreB)
+        await slack.chat.postMessage(confirmMessage);
     } else if ('interactive_message' === data.type && 'confirm_match' === data.callback_id) {
-        console.log(data.actions[0].value);
-
+        // Add DB record update
         return res.status(200).send('Thanks :-)');
     }
 
