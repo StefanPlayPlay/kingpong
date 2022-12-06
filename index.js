@@ -64,51 +64,54 @@ app.post('/', async (req, res) => {
 });
 
 app.post('/interact', async (req, res) => {
-    console.log('Got body:', req.body);
     const data = JSON.parse(req.body.payload);
+    console.log(data);
 
-    if ('report_result' === data['callback_id']) {
+    if ('shortcut' === data.type && 'report_result' === data.callback_id) {
         // Define the modal configuration
         const modal = {
             type: 'modal',
-            callback_id: "my_custm_cb_id",
+            callback_id: "submit_result",
             title: {
                 type: 'plain_text',
                 text: 'Report your result'
             },
             blocks: [
                 {
+                    "block_id": "opponent",
                     "type": "input",
                     "label": {
                         "type": "plain_text",
                         "text": "Opponent"
                     },
                     "element": {
-                        "action_id": "text1234",
+                        "action_id": "opponent_value",
                         "type": "users_select"
                     }
                 },
                 {
+                    "block_id": "user_a_score",
                     "type": "input",
                     "label": {
                         "type": "plain_text",
                         "text": "Your score"
                     },
                     "element": {
-                        "action_id": "text1234",
+                        "action_id": "user_a_score_value",
                         "type": "number_input",
                         is_decimal_allowed: false,
                         "min_value": "0"
                     }
                 },
                 {
+                    "block_id": "user_b_score",
                     "type": "input",
                     "label": {
                         "type": "plain_text",
                         "text": "Opponent score"
                     },
                     "element": {
-                        "action_id": "text1234",
+                        "action_id": "user_b_score_value",
                         "type": "number_input",
                         is_decimal_allowed: false,
                         "min_value": "0"
@@ -126,6 +129,13 @@ app.post('/interact', async (req, res) => {
             trigger_id: data.trigger_id,
             view: modal
         });
+    } else if ('view_submission' === data.type && 'submit_result' === data.view.callback_id) {
+        const userA = data.user.id;
+        const userB = data.view.state.values.opponent.opponent_value.selected_user;
+        const scoreA = data.view.state.values.user_a_score.user_a_score_value.value;
+        const scoreB = data.view.state.values.user_b_score.user_b_score_value.value;
+
+        console.log(userA, userB, scoreA, scoreB);
     }
 
     return res.json({});
