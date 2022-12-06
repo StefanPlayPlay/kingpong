@@ -22,11 +22,13 @@ app.post('/interact', async (req, res) => {
     const data = JSON.parse(req.body.payload);
     console.log(data);
 
+    // Shortcut that opens the modal
     if ('shortcut' === data.type && 'match_report' === data.callback_id) {
         await slack.views.open({
             trigger_id: data.trigger_id,
             view: modals.matchReportModal
         });
+    // When user submits the modal form
     } else if ('view_submission' === data.type && 'submit_result' === data.view.callback_id) {
         const userA = data.user.id;
         const userB = data.view.state.values.opponent.opponent_value.selected_user;
@@ -43,6 +45,7 @@ app.post('/interact', async (req, res) => {
         const documentId = 'cccccccc';
         const confirmMessage = messages.createConfirmMessage(conversation.channel.id,doc.id,userA,userB,scoreA,scoreB)
         await slack.chat.postMessage(confirmMessage);
+    // When userB confirms the result
     } else if ('interactive_message' === data.type && 'confirm_match' === data.callback_id) {
         // REPLACE BY GET USERS ID FROM DOCUMENT
         const userA = 'xxx';
@@ -50,12 +53,9 @@ app.post('/interact', async (req, res) => {
         const scoreA = '11';
         const scoreB = '6';
 
-
         const resultMessage = messages.createResultMessage('C04DX31AXD0',userA, userB, scoreA, scoreB)
         await slack.chat.postMessage(resultMessage);
-
         return res.status(200).send('Thanks :-)');
-
     }
 
     return res.json({});
