@@ -60,11 +60,21 @@ app.post('/interact', async (req, res) => {
         await slack.chat.postMessage(confirmMessage);
     // When userB confirms the result
     } else if ('interactive_message' === data.type && 'confirm_match' === data.callback_id) {
+
+        const hasDenied = data.actions[0].name === "deny";
+
         // REPLACE BY GET USERS ID FROM DOCUMENT
         const userA = 'xxx';
         const userB = 'xxx';
         const scoreA = '11';
         const scoreB = '6';
+
+        if(hasDenied){  
+            // TODO: create another message
+            const deniedMessage = messages.createCheaterMessage(userA);
+            await slack.chat.postMessage(resultMessage);
+            return res.json({});
+        }
 
         const resultMessage = messages.createResultMessageBulle('C04DX31AXD0',userA, userB, scoreA, scoreB)
         await slack.chat.postMessage(resultMessage);

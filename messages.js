@@ -15,6 +15,12 @@ const createConfirmMessage = (recipientId, docId, userA, userB, scoreA, scoreB) 
                         "text": "Yes",
                         "type": "button",
                         "value": docId
+                    },
+                    {
+                        "name": "deny",
+                        "text": "No, he's lying",
+                        "type": "button",
+                        "value": docId
                     }
                 ]
             }
@@ -41,7 +47,6 @@ const createCheaterMessage = (recipientId) => { 
         ]     
     };
 }
-
 
 const createResultMessage = (channelId, userA, userB, scoreA, scoreB) => {
     const text = `New Result :  <@${userA}>(${scoreA}) - <@${userB}>(${scoreB})`;
