@@ -3,7 +3,7 @@ let http = require('http')
 const bodyParser = require('body-parser');
 let dotenv =  require('dotenv');
 const modals = require('./modals')
-const messages = required('./messages')
+const messages = required('./messages.js')
 
 dotenv.config();
 
@@ -36,7 +36,7 @@ app.post('/interact', async (req, res) => {
         console.log(userA, userB, scoreA, scoreB);
         // TO PUT AGAIN : insert to DB 
 
-// Open a direct message channel with the user
+        // Open a direct message channel with the user
         const conversation = await slack.conversations.open({
             users: userB,
         });
@@ -45,7 +45,23 @@ app.post('/interact', async (req, res) => {
         await slack.chat.postMessage(confirmMessage);
     } else if ('interactive_message' === data.type && 'confirm_match' === data.callback_id) {
         // Add DB record update
+
+        const conversation = await slack.conversations.open({
+            channel: 'C04DX31AXD0',
+        });
+        
+        // REPLACE BY GET USERS ID FROM DOCUMENT
+        const userA = 'xxx';
+        const userB = 'xxx';
+        const scoreA = '11';
+        const scoreB = '6';
+
+
+        const resultMessage = messages.createResultMessage('C04DX31AXD0',userA, userB, scoreA, scoreB)
+        await slack.chat.postMessage();
+
         return res.status(200).send('Thanks :-)');
+
     }
 
     return res.json({});

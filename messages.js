@@ -22,4 +22,19 @@ const createConfirmMessage = (recipientId, docId, userA, userB, scoreA, scoreB) 
     };
 }
 
+const createResultMessage = (channelId, userA, userB, scoreA, scoreB) => {
+    const text = `New Result :  <@${userA}>(${scoreA}) - <@${userB}>(${scoreB})`;
+    return {
+        channel: channelId,
+        text: text
+    };
+}
+
+
+modules.exports = {
+    createConfirmMessage,
+    createResultMessage
+}
+
+
 
