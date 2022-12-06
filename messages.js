@@ -52,6 +52,10 @@ const createResultMessage = (channelId, userA, userB, scoreA, scoreB) => {
 }
 
 const createResultMessageBulle = (channelId, userA, userB, scoreA, scoreB) => {
+    let text = `<@${userA}> just won ${scoreA}-${scoreB} against <@${userB}> :melting_face:`;
+    if (scoreB > scoreA) {
+        text = `<@${userB}> just won ${scoreB}-${scoreA} against <@${userA}> :melting_face:`;
+    }
     return{
         channel: channelId, 
         blocks: [
@@ -59,7 +63,7 @@ const createResultMessageBulle = (channelId, userA, userB, scoreA, scoreB) => {
                 "type": "section",
                 "text": {
                     "type": "mrkdwn",
-                    "text": `<@${userA}> just won ${scoreA}-${scoreB} against <@${userB}> :melting_face:`
+                    "text": text
                 }
             }, 
             {
