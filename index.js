@@ -3,6 +3,7 @@ let http = require('http')
 let path = require('path')
 const bodyParser = require('body-parser');
 let dotenv =  require('dotenv');
+let modals = require('./modals')
 
 dotenv.config();
 
@@ -65,69 +66,12 @@ app.post('/', async (req, res) => {
 
 app.post('/interact', async (req, res) => {
     const data = JSON.parse(req.body.payload);
-    console.log(data);
 
     if ('shortcut' === data.type && 'report_result' === data.callback_id) {
-        // Define the modal configuration
-        const modal = {
-            type: 'modal',
-            callback_id: "submit_result",
-            title: {
-                type: 'plain_text',
-                text: 'Report your result'
-            },
-            blocks: [
-                {
-                    "block_id": "opponent",
-                    "type": "input",
-                    "label": {
-                        "type": "plain_text",
-                        "text": "Opponent"
-                    },
-                    "element": {
-                        "action_id": "opponent_value",
-                        "type": "users_select"
-                    }
-                },
-                {
-                    "block_id": "user_a_score",
-                    "type": "input",
-                    "label": {
-                        "type": "plain_text",
-                        "text": "Your score"
-                    },
-                    "element": {
-                        "action_id": "user_a_score_value",
-                        "type": "number_input",
-                        is_decimal_allowed: false,
-                        "min_value": "0"
-                    }
-                },
-                {
-                    "block_id": "user_b_score",
-                    "type": "input",
-                    "label": {
-                        "type": "plain_text",
-                        "text": "Opponent score"
-                    },
-                    "element": {
-                        "action_id": "user_b_score_value",
-                        "type": "number_input",
-                        is_decimal_allowed: false,
-                        "min_value": "0"
-                    }
-                },
-            ],
-            submit: {
-                type: 'plain_text',
-                text: 'Submit'
-            }
-        };
-
         // Open the modal
         await slack.views.open({
             trigger_id: data.trigger_id,
-            view: modal
+            view: modals.matchReportModal
         });
     } else if ('view_submission' === data.type && 'submit_result' === data.view.callback_id) {
         const userA = data.user.id;
