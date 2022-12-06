@@ -32,8 +32,17 @@ app.post('/interact', async (req, res) => {
     } else if ('view_submission' === data.type && 'submit_result' === data.view.callback_id) {
         const userA = data.user.id;
         const userB = data.view.state.values.opponent.opponent_value.selected_user;
-        const scoreA = data.view.state.values.user_a_score.user_a_score_value.value;
-        const scoreB = data.view.state.values.user_b_score.user_b_score_value.value;
+        const scoreA = parseInt(data.view.state.values.user_a_score.user_a_score_value.value, 10);
+        const scoreB = parseInt(data.view.state.values.user_b_score.user_b_score_value.value, 10);
+
+        if (scoreA === scoreB) {
+            return res.json({
+                "response_action": "errors",
+                "errors": {
+                    "user_b_score": "The two scores can't be the same.",
+                }
+            });
+        }
 
         if(userA === userB){
             const cheaterMessage = messages.createCheaterMessage(userA);
