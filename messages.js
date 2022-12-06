@@ -30,11 +30,30 @@ const createResultMessage = (channelId, userA, userB, scoreA, scoreB) => {
     };
 }
 
-
-modules.exports = {
-    createConfirmMessage,
-    createResultMessage
+const createResultMessageBulle = (channelId, userA, userB, scoreA, scoreB) => {
+    return{
+        channel: channelId, 
+        blocks: [
+            {
+                "type": "section",
+                "text": {
+                    "type": "mrkdwn",
+                    "text": `<@${userA}> just won ${scoreA}-${scoreB} against <@${userB}> 🫠`
+                },
+                "accessory": {
+                    "type": "image",
+                    "image_url": "https://media.giphy.com/media/9QmldqOBxeBZC/giphy.gif",
+                    "alt_text": "Bubble time"
+                }
+            }
+        ]   
+    };
 }
 
 
 
+modules.exports = {
+    createConfirmMessage,
+    createResultMessage, 
+    createResultMessageBulle
+}
