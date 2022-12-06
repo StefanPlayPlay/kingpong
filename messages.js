@@ -38,13 +38,23 @@ const createResultMessageBulle = (channelId, userA, userB, scoreA, scoreB) => {
                 "type": "section",
                 "text": {
                     "type": "mrkdwn",
-                    "text": `<@${userA}> just won ${scoreA}-${scoreB} against <@${userB}> :melting_face:`
+                    "text": `<@${userA}> just won ${scoreA}-${scoreB} against <@${userB}> 🫠`
                 },
                 "accessory": {
                     "type": "image",
                     "image_url": "https://media.giphy.com/media/9QmldqOBxeBZC/giphy.gif",
                     "alt_text": "Bubble time"
                 }
+            }, 
+            {
+                "type": "image",
+                "title": {
+                    "type": "plain_text",
+                    "text": "It's bubble time",
+                    "emoji": true
+                },
+                "image_url": "https://media.giphy.com/media/9QmldqOBxeBZC/giphy.gif",
+                "alt_text": "Bubble"
             }
         ]   
     };
