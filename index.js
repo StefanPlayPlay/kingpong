@@ -44,12 +44,6 @@ app.post('/interact', async (req, res) => {
         const confirmMessage = messages.createConfirmMessage(conversation.channel.id,doc.id,userA,userB,scoreA,scoreB)
         await slack.chat.postMessage(confirmMessage);
     } else if ('interactive_message' === data.type && 'confirm_match' === data.callback_id) {
-        // Add DB record update
-
-        const conversation = await slack.conversations.open({
-            channel: 'C04DX31AXD0',
-        });
-        
         // REPLACE BY GET USERS ID FROM DOCUMENT
         const userA = 'xxx';
         const userB = 'xxx';
@@ -58,7 +52,7 @@ app.post('/interact', async (req, res) => {
 
 
         const resultMessage = messages.createResultMessage('C04DX31AXD0',userA, userB, scoreA, scoreB)
-        await slack.chat.postMessage();
+        await slack.chat.postMessage(resultMessage);
 
         return res.status(200).send('Thanks :-)');
 
