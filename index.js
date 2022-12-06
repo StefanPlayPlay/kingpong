@@ -1,6 +1,5 @@
 let express = require('express')
 let http = require('http')
-let path = require('path')
 const bodyParser = require('body-parser');
 let dotenv =  require('dotenv');
 let modals = require('./modals')
@@ -18,57 +17,11 @@ const slack = new WebClient(token);
 let app = express()
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.post('/', async (req, res) => {
-    console.log('Got body:', req.body);
-    let userA = req.body.user_id;
-
-    const regex = /^<@([A-Z0-9]+)\|[^>]*> +(\d+) *- *(\d+)/;
-
-    const match = regex.exec(req.body.text);
-    let userB = match[1];
-    let scoreA = match[2];
-    let scoreB = match[3];
-
-    const conversation = await slack.conversations.open({
-        users: userB,
-    });
-
-    await slack.chat.postMessage({
-        channel: conversation.channel.id,
-        text: 'Hello, this is a private message!',
-        attachments: [
-
-        ],
-    });
-
-    return res.json({
-        "channel": "C04DX31AXD0",
-        "text": "I hope the tour went well, Mr. Wonka.",
-        "attachments": [
-            {
-                "text": "Who wins the lifetime supply of chocolate?",
-                "fallback": "You could be telling the computer exactly what it can do with a lifetime supply of chocolate.",
-                "color": "#3AA3E3",
-                "attachment_type": "default",
-                "callback_id": "select_simple_1234",
-                "actions": [
-                    {
-                        "name": "winners_list",
-                        "text": "Who should win?",
-                        "type": "select",
-                        "data_source": "users"
-                    }
-                ]
-            }
-        ]
-    });
-});
-
 app.post('/interact', async (req, res) => {
     const data = JSON.parse(req.body.payload);
+    console.log(data);
 
-    if ('shortcut' === data.type && 'report_result' === data.callback_id) {
-        // Open the modal
+    if ('shortcut' === data.type && 'match_report' === data.callback_id) {
         await slack.views.open({
             trigger_id: data.trigger_id,
             view: modals.matchReportModal
@@ -80,6 +33,68 @@ app.post('/interact', async (req, res) => {
         const scoreB = data.view.state.values.user_b_score.user_b_score_value.value;
 
         console.log(userA, userB, scoreA, scoreB);
+
+// Open a direct message channel with the user
+        const conversation = await slack.conversations.open({
+            users: userB,
+        });
+
+        let mtext = 'Do you confirm that you won a ping-pong match against <@'+userA+'> ('+scoreB+'-'+scoreA+')?';
+        if (scoreA > scoreB) {
+            mtext = 'Do you confirm that <@' + userA + '> won a ping-pong match against you (' + scoreA + '-' + scoreB + ')?';
+        }
+// Send a message with the button attachment
+//         await slack.chat.postMessage({
+//             channel: conversation.channel.id,
+//             text: mtext,
+//             attachments: [
+//                 {
+//                     "callback_id": "wopr_game",
+//                     "color": "#3AA3E3",
+//                     "attachment_type": "default",
+//                     "actions": [
+//                         {
+//                             "name": "game",
+//                             "text": "Thermonuclear War",
+//                             "style": "danger",
+//                             "type": "button",
+//                             "value": "war",
+//                             "confirm": {
+//                                 "title": "Are you sure?",
+//                                 "text": "Wouldn't you prefer a good game of chess?",
+//                                 "ok_text": "Yes",
+//                                 "dismiss_text": "No"
+//                             }
+//                         }
+//                     ]
+//                 }
+//             ]
+//         });
+        const documentId = 'cccccccc';
+        await slack.chat.postMessage({
+            channel: conversation.channel.id,
+            text: 'Hello',
+            "attachments": [
+                {
+                    "text": mtext,
+                    "callback_id": "confirm_match",
+                    "color": "#3AA3E3",
+                    "attachment_type": "default",
+                    "actions": [
+                        {
+                            "name": "game",
+                            "text": "Yes",
+                            "type": "button",
+                            "value": documentId
+                        }
+                    ]
+                }
+            ]
+        })
+    } else if ('interactive_message' === data.type && 'confirm_match' === data.callback_id) {
+        console.log(data.actions[0].value);
+
+        return res.status(200).send('Thanks :-)');
     }
 
     return res.json({});
