@@ -22,6 +22,27 @@ const createConfirmMessage = (recipientId, docId, userA, userB, scoreA, scoreB) 
     };
 }
 
+const createCheaterMessage = (recipientId) => { 
+    return{
+        channel: recipientId, 
+        blocks: [
+            {
+                "type": "section",
+                "text": {
+                    "type": "mrkdwn",
+                    "text": `You filthy cheater`
+                }
+            }, 
+            {
+                "type": "image",
+                "image_url": "https://media2.giphy.com/media/3o6ZtdRTmf7f0Ug0Eg/giphy.gif",
+                "alt_text": "Bubble"
+            }
+        ]     
+    };
+}
+
+
 const createResultMessage = (channelId, userA, userB, scoreA, scoreB) => {
     const text = `New Result :  <@${userA}>(${scoreA}) - <@${userB}>(${scoreB})`;
     return {
@@ -58,6 +79,7 @@ const createResultMessageBulle = (channelId, userA, userB, scoreA, scoreB) => {
 
 
 modules.exports = {
+    createCheaterMessage,
     createConfirmMessage,
     createResultMessage, 
     createResultMessageBulle

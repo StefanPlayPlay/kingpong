@@ -35,8 +35,12 @@ app.post('/interact', async (req, res) => {
         const scoreA = data.view.state.values.user_a_score.user_a_score_value.value;
         const scoreB = data.view.state.values.user_b_score.user_b_score_value.value;
 
-        console.log(userA, userB, scoreA, scoreB);
-        // TO PUT AGAIN : insert to DB 
+        if(userA === userB){
+            const cheaterMessage = messages.createCheaterMessage(userA);
+            await slack.chat.postMessage(cheaterMessage);
+            return res.json({});
+        }
+        // NEED TO ADD : insert to DB 
 
         // Open a direct message channel with the user
         const conversation = await slack.conversations.open({
@@ -53,7 +57,7 @@ app.post('/interact', async (req, res) => {
         const scoreA = '11';
         const scoreB = '6';
 
-        const resultMessage = messages.createResultMessage('C04DX31AXD0',userA, userB, scoreA, scoreB)
+        const resultMessage = messages.createResultMessageBulle('C04DX31AXD0',userA, userB, scoreA, scoreB)
         await slack.chat.postMessage(resultMessage);
         return res.status(200).send('Thanks :-)');
     }
