@@ -57,6 +57,18 @@ const createResultMessage = (channelId, userA, userB, scoreA, scoreB) => {
 }
 
 const createResultMessageBulle = (channelId, userA, userB, scoreA, scoreB) => {
+    let score_diff = Math.abs(scoreA-scoreB);
+    let gif_url = "https://media.giphy.com/media/leH08nNU11M6zJrqNz/giphy.gif";
+    switch(score_diff){
+        case 1:
+            gif_url = "https://media.giphy.com/media/leH08nNU11M6zJrqNz/giphy.gif"
+        break; 
+        case 2:
+            gif_url = "https://media.giphy.com/media/3oKIPf3C7HqqYBVcCk/giphy.gif"
+        break;
+        default:
+        break;
+    }
     let text = `<@${userA}> just won ${scoreA}-${scoreB} against <@${userB}> :melting_face:`;
     if (scoreB > scoreA) {
         text = `<@${userB}> just won ${scoreB}-${scoreA} against <@${userA}> :melting_face:`;
@@ -73,13 +85,8 @@ const createResultMessageBulle = (channelId, userA, userB, scoreA, scoreB) => {
             }, 
             {
                 "type": "image",
-                "title": {
-                    "type": "plain_text",
-                    "text": "It's bubble time",
-                    "emoji": true
-                },
-                "image_url": "https://media.giphy.com/media/9QmldqOBxeBZC/giphy.gif",
-                "alt_text": "Bubble"
+                "image_url": gif_url,
+                "alt_text": 'funny gif'
             }
         ]   
     };
