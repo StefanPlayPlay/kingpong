@@ -32,8 +32,8 @@ const gifs = {
     11: [
         "https://media.giphy.com/media/9QmldqOBxeBZC/giphy.gif",
     ],
+    denied: ['https://media0.giphy.com/media/w97X9z4X3O4hi/giphy.gif'],
+    cheater: ['https://media0.giphy.com/media/vX9WcCiWwUF7G/giphy.gif'],
 };
 
-module.exports = {
-    gifs
-}
+module.exports = gifs

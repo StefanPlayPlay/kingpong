@@ -30,21 +30,41 @@ const createConfirmMessage = (recipientId, docId, userA, userB, scoreA, scoreB) 
     };
 }
 
-const createCheaterMessage = (recipientId) => { 
+const createCheaterMessage = (channelId, cheaterId) => { 
     return{
-        channel: recipientId, 
+        channel: channelId, 
         blocks: [
         {
             "type": "section",
             "text": {
                 "type": "mrkdwn",
-                "text": `You filthy cheater`
+                "text": `<@${cheaterId}> tried to cheat!! You thought we wouldn't catch you?`
             }
         }, 
         {
             "type": "image",
-            "image_url": "https://media2.giphy.com/media/3o6ZtdRTmf7f0Ug0Eg/giphy.gif",
-            "alt_text": "Bubble"
+            "image_url": gifs['cheater'][0],
+            "alt_text": "Cheater"
+        }
+        ]     
+    };
+}
+
+const createDenyMessage = (channelId, initiatorId, denierId, initiatorScore, denierScore) => { 
+    return{
+        channel: channelId, 
+        blocks: [
+        {
+            "type": "section",
+            "text": {
+                "type": "mrkdwn",
+                "text": `<@${denierId}> denied the following result : <@${initiatorId}>(${initiatorScore}) - <@${denierId}>(${denierScore})`
+            }
+        }, 
+        {
+            "type": "image",
+            "image_url": gifs['denied'][0],
+            "alt_text": "Cheater"
         }
         ]     
     };
@@ -149,5 +169,6 @@ const createResultMessage = (channelId, userA, userB, scoreA, scoreB) => {
 modules.exports = {
     createCheaterMessage,
     createConfirmMessage,
+    createDenyMessage,
     createResultMessage
 }

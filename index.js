@@ -57,7 +57,7 @@ app.post('/interact', async (req, res) => {
         }
 
         if(userA === userB){
-            const cheaterMessage = messages.createCheaterMessage(userA);
+            const cheaterMessage = messages.createCheaterMessage('C04DX31AXD0', userA);
             await slack.chat.postMessage(cheaterMessage);
             return res.json({});
         }
@@ -82,9 +82,8 @@ app.post('/interact', async (req, res) => {
         const scoreB = '6';
 
         if(hasDenied){  
-            // TODO: create another message
-            const deniedMessage = messages.createCheaterMessage(userA);
-            await slack.chat.postMessage(resultMessage);
+            const deniedMessage = messages.createDenyMessage('C04DX31AXD0',userA,userB,scoreA,scoreB);
+            await slack.chat.postMessage(deniedMessage);
             return res.json({});
         }
         // Now we now result is accepted
