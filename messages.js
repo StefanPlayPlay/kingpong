@@ -50,7 +50,7 @@ const createCheaterMessage = (recipientId) => { 
 
 const createResultMessage = (channelId, userA, userB, scoreA, scoreB) => {
     let score_diff = Math.abs(scoreA-scoreB);
-    let gif_url = "https://imgur.com/dFH9FSs";
+    let gif_url = "https://i.imgur.com/dFH9FSs.gif";
     let gif_alt_text = "Guy smashing and throwing the paddle";
     const winner = scoreA > scoreB ? userA : userB;
     const loser = scoreA > scoreB ? userB : userA;
@@ -70,12 +70,12 @@ const createResultMessage = (channelId, userA, userB, scoreA, scoreB) => {
         text = `What a match! :scream: <@${winner}> won ${winner_score}-${loser_score} against <@${loser}>`
         break;
     case 3:
-        gif_url = "https://imgur.com/058BuSm"
+        gif_url = "https://i.imgur.com/058BuSm.gif"
         gif_alt_text = "Trick shot"
         text = `Whoop whoop :dancingcorgi: <@${winner}> won ${winner_score}-${loser_score} against <@${loser}>`
         break;
     case 4:
-        gif_url = "https://imgur.com/htcUmNM"
+        gif_url = "https://i.imgur.com/htcUmNM.gif"
         gif_alt_text = "Simple math"
         text = `Game! :abacus: <@${winner}> won ${winner_score}-${loser_score} against <@${loser}>`
         break;
@@ -85,7 +85,7 @@ const createResultMessage = (channelId, userA, userB, scoreA, scoreB) => {
         text = `:leftwards_hands: <@${winner}> won ${winner_score}-${loser_score} against <@${loser}>`
         break;
     case 6:
-        gif_url = "https://media.giphy.com/media/gAap1hEomkx2cktXYT/giphy.gif"
+        gif_url = "https://i.imgur.com/GN3vrDG.gif"
         gif_alt_text = "It's average, let's be honest"
         text = `A fair match won by <@${winner}> against <@${loser}> with a ${winner_score}-${loser_score} score`
         break;
@@ -100,12 +100,12 @@ const createResultMessage = (channelId, userA, userB, scoreA, scoreB) => {
         text = `<@${winner}> kicked <@${loser}> in a ${winner_score}-${loser_score} victory :martial_arts_uniform:`
         break;
     case 9:
-        gif_url = "https://imgur.com/nEHwwmz"
+        gif_url = "https://i.imgur.com/nEHwwmz.gif"
         gif_alt_text = "Vivien rolling over Camille"
         text = `Outch! :tractor: <@${winner}> rolled over <@${loser}> in a ${winner_score}-${loser_score} game`
         break;
     case 10:
-        gif_url = "https://imgur.com/Ez8J0f5"
+        gif_url = "https://i.imgur.com/Ez8J0f5.gif"
         gif_alt_text = "No risk at all"
         text = `Damn! <@${winner}> won ${winner_score}-${loser_score} against <@${loser}>`
         break;
