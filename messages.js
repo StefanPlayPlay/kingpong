@@ -4,7 +4,6 @@ const createConfirmMessage = (recipientId, docId, userA, userB, scoreA, scoreB) 
     const text = `<@${userA}> submitted the following result : <@${userA}>(${scoreA}) - <@${userB}>(${scoreB}). Do you confirm ?`;
     return {
         channel: recipientId,
-        text: 'Hello',
         "attachments": [
         {
             "text": text,
@@ -30,7 +29,7 @@ const createConfirmMessage = (recipientId, docId, userA, userB, scoreA, scoreB) 
     };
 }
 
-const createCheaterMessage = (channelId, cheaterId) => { 
+const createCheaterMessage = (channelId, cheaterId) => {
     return{
         channel: channelId, 
         blocks: [

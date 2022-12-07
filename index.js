@@ -95,7 +95,7 @@ app.post('/interact', async (req, res) => {
 
         const resultMessage = messages.createResultMessage('C04DX31AXD0',userA, userB, scoreA, scoreB)
         await slack.chat.postMessage(resultMessage);
-        return res.status(200).send('Thanks :-)');
+        return res.status(200).send(':ok_hand:');
     }
 
     return res.json({});
