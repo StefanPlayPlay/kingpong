@@ -45,6 +45,7 @@ const gifs = {
     11: [
         "https://media.giphy.com/media/9QmldqOBxeBZC/giphy.gif",
         "https://media0.giphy.com/media/Mkrv6hMDj7kcM/giphy.gif", // Mortal Kombat fatality
+        "https://i.imgur.com/CTBhMwg.gif", // I'm shaking bro
     ],
     denied: ['https://media0.giphy.com/media/w97X9z4X3O4hi/giphy.gif'],
     cheater: [
