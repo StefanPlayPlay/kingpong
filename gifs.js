@@ -32,6 +32,7 @@ const gifs = {
         "https://media.giphy.com/media/Oc4pSGTekXrtC/giphy.gif",
         "https://i.imgur.com/Oh7GXNJ.gif", // Destroy table
         "https://media4.giphy.com/media/hoQy6gCy0r4PK/giphy.gif", // Rugby
+        "https://i.imgur.com/NF7TyV7.gif" // Salt fifi
     ],
     9: [
         "https://i.imgur.com/nEHwwmz.gif",
