@@ -141,42 +141,42 @@ const createResultMessage = (channelId, userA, userB, scoreA, scoreB) => {
         break;
     case 11:
         if (loser_score === 0){
-         text = `*Bubble time! :bubbles: ${winner_score} to ${loser_score}*
+            text = `*Bubble time! :bubbles: ${winner_score} to ${loser_score}*
     <@${winner}> ended <@${loser}>'s ping-pong career. You can drop your stuff at the HR dept :door::man-walking:` 
-     }
-     else {
-        text = `*Well that was easy! :broom: ${winner_score} to ${loser_score}*
-<@${winner}> cleared <@${loser}> out of the room. Maybe you should try playing baby-foot? :baby-foot:`
-    }
-    break;
-default:
-    break;
-}
-return{
-    channel: channelId, 
-    blocks: [
-    {
-        type: 'divider'
-    },
-    {
-        "type": "section",
-        "text": {
-            "type": "mrkdwn",
-            "text": text
         }
-    }, 
-    {
-        "type": "image",
-        "title": {
-            "type": "plain_text",
-            "text": gif_alt_text,
-            "emoji": true
+        else {
+            text = `*Well that was easy! :broom: ${winner_score} to ${loser_score}*
+<@${winner}> cleared <@${loser}> out of the room. Maybe you should try playing baby-foot? :baby-foot:`
+        }
+        break;
+    default:
+        break;
+}
+    return{
+        channel: channelId, 
+        blocks: [
+        {
+            type: 'divider'
         },
-        "image_url": gif_url,
-        "alt_text": gif_alt_text
-    }
-    ]   
-};
+        {
+            "type": "section",
+            "text": {
+                "type": "mrkdwn",
+                "text": text
+            }
+        }, 
+        {
+            "type": "image",
+            "title": {
+                "type": "plain_text",
+                "text": gif_alt_text,
+                "emoji": true
+            },
+            "image_url": gif_url,
+            "alt_text": gif_alt_text
+        }
+        ]   
+    };
 }
 
 
