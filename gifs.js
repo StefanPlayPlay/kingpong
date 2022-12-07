@@ -14,21 +14,26 @@ const gifs = {
     ],
     5: [
         "https://i.giphy.com/media/hQSkQm41brwdYDIGqr/giphy.webp",
+        "https://i.imgur.com/HRDjDUY.gif", // Etchebest baffe
     ],
     6: [
         "https://i.imgur.com/z0mssC3.gif",
+        "https://i.imgur.com/3JmLgV5.gif", // Wasted
     ],
     7: [
         "https://media.giphy.com/media/sxCKezAUq8yn6/giphy.gif",
     ],
     8: [
         "https://media.giphy.com/media/Oc4pSGTekXrtC/giphy.gif",
+        "https://i.imgur.com/Oh7GXNJ.gif", // Destroy table
     ],
     9: [
         "https://i.imgur.com/nEHwwmz.gif",
+        "https://i.imgur.com/BhVaf9s.gif", // No hands needed
     ],
     10: [
         "https://media.giphy.com/media/l2JJod66TKus2t3QA/giphy.gif",
+        "https://i.imgur.com/4YafJbJ.gif", // Eating butt
     ],
     11: [
         "https://media.giphy.com/media/9QmldqOBxeBZC/giphy.gif",
