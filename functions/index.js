@@ -67,33 +67,52 @@ exports.pingPongMatch = functions.https.onRequest(async (req, res) => {
         return res.json({});
     }
     else if ('interactive_message' === data.type && 'confirm_match' === data.callback_id) {
-        const hasDenied = data.actions[0].name === "deny";
         const docId = data.actions[0].value;
-        console.log('Receieved confirmation with docid :', docId);
+        console.log('Received confirmation with docid :', docId);
         const match = firestore.collection(COLLECTION_NAME).doc(docId);
-        await match.update({
-            is_approved: true
-        });
 
-        const matchUpdated = await match.get();
-        const matchData = matchUpdated.data();
+        const matchData = (await match.get()).data();
         const userA = matchData['user_a'];
         const userB = matchData['user_b'];
         const scoreA = matchData['user_a_score'];
         const scoreB = matchData['user_b_score'];
 
-        if(hasDenied){
+        const hasDenied = data.actions[0].name === "deny";
+        if (hasDenied){
             // Envoyer un message au createur
             // TODO: create another message
             const deniedMessage = messages.createCheaterMessage(userA);
             await slack.chat.postMessage(deniedMessage);
-            return res.json({});
-        }
+        } else {
+            await match.update({
+                is_approved: true
+            });
 
-        const resultMessage = messages.createResultMessageBulle('C04DX31AXD0',userA, userB, scoreA, scoreB);
-        // const resultMessage = messages.createResultMessage('C04DX31AXD0',userA, userB, scoreA, scoreB);
-        await slack.chat.postMessage(resultMessage);
+            const resultMessage = messages.createResultMessageBulle('C04DX31AXD0', userA, userB, scoreA, scoreB);
+            // const resultMessage = messages.createResultMessage('C04DX31AXD0',userA, userB, scoreA, scoreB);
+            await slack.chat.postMessage(resultMessage);
+        }
 
         return res.status(200).send('Thanks :-)');
     }
+});
+
+exports.leaderboard = functions.https.onRequest(async (req, res) => {
+    let leaderboard = [];
+    await firestore.collection('rankings').orderBy("ranking", "desc")
+        .get()
+        .then(function(querySnapshot) {
+            querySnapshot.forEach(function(doc) {
+                const data = doc.data();
+                leaderboard.push(data);
+            });
+        })
+
+    if (!leaderboard.length) {
+        return res;
+    }
+
+    await slack.chat.postMessage(messages.createLeaderboardMessage('C04DX31AXD0', leaderboard));
+
+    return res;
 });

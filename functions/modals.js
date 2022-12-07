@@ -3,7 +3,7 @@ const matchReportModal =  {
     callback_id: "submit_result",
     title: {
         type: 'plain_text',
-        text: 'Report your result'
+        text: 'Report your results'
     },
     blocks: [
         {

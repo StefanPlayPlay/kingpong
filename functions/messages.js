@@ -18,7 +18,7 @@ const createConfirmMessage = (recipientId, docId, userA, userB, scoreA, scoreB) 
                     },
                     {
                         "name": "deny",
-                        "text": "No, he's a liar",
+                        "text": "No, it's a lie!",
                         "type": "button",
                         "value": docId
                     }
@@ -92,10 +92,80 @@ const createResultMessageBulle = (channelId, userA, userB, scoreA, scoreB) => {
     };
 }
 
+const createLeaderboardMessage = (channelId, leaderboard) => {
+    leaderboard = leaderboard.slice(0, 49);
+
+    let blocks = [
+        {
+            "type": "header",
+            "text": {
+                "type": "plain_text",
+                "text": "🏆 Leaderboard",
+                "emoji": true,
+            },
+        },
+    ];
+
+    const totalUsers = leaderboard.length;
+    const emojis = [
+        '⭐️', // > 90%
+        '✨', // > 80%
+        '👍', // > 70%
+        '💪', // > 60%
+        '😐', // > 50%
+        '😕', // > 40%
+        '😔', // > 30%
+        '😞', // > 20%
+        '😭', // > 10%
+        '🤦', // > 0%
+    ];
+    let getEmoji = function (position) {
+        if (1 === position) {
+            return '🥇🏓';
+        }
+
+        if (2 === position) {
+            return '🥈';
+        }
+
+        if (3 === position) {
+            return '🥉';
+        }
+
+        if (totalUsers === position) {
+            return '💩';
+        }
+
+        const i = Math.floor(10 - (1 - (position - 1) / (totalUsers - 1)) * 10 % 10);
+
+        return emojis[i];
+    };
+
+    for (let i = 0; i < leaderboard.length; i++) {
+        const position = i + 1;
+        const emoji = getEmoji(position);
+
+        blocks.push({
+            "type": "context",
+            "elements": [
+                {
+                    "type": "mrkdwn",
+                    "text": `${emoji} #${position} <@${leaderboard[i].user_id}> (*${leaderboard[i].ranking}* ELO)`,
+                },
+            ],
+        });
+    }
+
+    return {
+        channel: channelId,
+        blocks: blocks,
+    };
+};
 
 module.exports = {
     createConfirmMessage,
     createCheaterMessage,
     createResultMessage,
-    createResultMessageBulle
+    createResultMessageBulle,
+    createLeaderboardMessage,
 };
