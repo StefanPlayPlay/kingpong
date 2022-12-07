@@ -22,6 +22,7 @@ const gifs = {
     6: [
         "https://i.imgur.com/z0mssC3.gif",
         "https://i.imgur.com/3JmLgV5.gif", // Wasted
+        "https://github.com/StefanPlayPlay/kingpong/edit/main/gifs.js", // Small slap
     ],
     7: [
         "https://media.giphy.com/media/sxCKezAUq8yn6/giphy.gif",
