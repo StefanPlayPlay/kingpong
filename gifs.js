@@ -11,6 +11,7 @@ const gifs = {
     ],
     4: [
         "https://i.imgur.com/LeZX32R.gif",
+        "https://media3.giphy.com/media/l31XaGrL7GoevTVhXX/200.webp", // not my lucky day
     ],
     5: [
         "https://i.giphy.com/media/hQSkQm41brwdYDIGqr/giphy.webp",
@@ -22,6 +23,7 @@ const gifs = {
     ],
     7: [
         "https://media.giphy.com/media/sxCKezAUq8yn6/giphy.gif",
+        "https://media1.giphy.com/media/lr7CTeBJJP3BC/giphy.gif" // he got game
     ],
     8: [
         "https://media.giphy.com/media/Oc4pSGTekXrtC/giphy.gif",
@@ -34,6 +36,7 @@ const gifs = {
     10: [
         "https://media.giphy.com/media/l2JJod66TKus2t3QA/giphy.gif",
         "https://i.imgur.com/4YafJbJ.gif", // Eating butt
+        "https://i.imgur.com/xSl6rgJ.gif" // Slapping butt
     ],
     11: [
         "https://media.giphy.com/media/9QmldqOBxeBZC/giphy.gif",
