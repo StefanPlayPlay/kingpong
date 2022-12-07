@@ -35,6 +35,7 @@ const gifs = {
     9: [
         "https://i.imgur.com/nEHwwmz.gif",
         "https://i.imgur.com/BhVaf9s.gif", // No hands needed
+        "https://i.imgur.com/UTLPEzW.gif", // OSS 117 Jack
     ],
     10: [
         "https://media.giphy.com/media/l2JJod66TKus2t3QA/giphy.gif",
