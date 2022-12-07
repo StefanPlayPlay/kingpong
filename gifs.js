@@ -5,6 +5,7 @@ const gifs = {
     ],
     2: [
         "https://i.imgur.com/Od9OtO0.gif",
+        "https://i.imgur.com/iQXoyLi.gif", // Pro ping-pong players
     ],
     3: [
         "https://i.imgur.com/XPLATfK.gif",
@@ -44,7 +45,10 @@ const gifs = {
         "https://media0.giphy.com/media/Mkrv6hMDj7kcM/giphy.gif", // Mortal Kombat fatality
     ],
     denied: ['https://media0.giphy.com/media/w97X9z4X3O4hi/giphy.gif'],
-    cheater: ['https://i.imgur.com/Pi5EWta.gif'],
+    cheater: [
+        'https://i.imgur.com/Pi5EWta.gif',
+        'https://i.imgur.com/zoTJUBi.jpg', // Obama medal
+    ],
 };
 
 module.exports = gifs;
