@@ -26,6 +26,7 @@ const gifs = {
     7: [
         "https://media.giphy.com/media/sxCKezAUq8yn6/giphy.gif",
         "https://media1.giphy.com/media/lr7CTeBJJP3BC/giphy.gif" // he got game
+        "https://i.imgur.com/Bg8hSgo.gif", // Nuts kick
     ],
     8: [
         "https://media.giphy.com/media/Oc4pSGTekXrtC/giphy.gif",
