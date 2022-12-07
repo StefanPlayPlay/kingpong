@@ -11,6 +11,6 @@ const updateRanking = (winner, looser)=>{
     console.log(`winner went from ${looserCurrentRating} to ${updatedLooserRating}`);
 }
 
-modules.exports = {
+module.exports = {
     updateRanking
 }
