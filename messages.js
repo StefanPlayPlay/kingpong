@@ -104,56 +104,54 @@ const createResultMessage = (channelId, userA, userB, scoreA, scoreB) => {
         text = `How did you do that?`
         break; 
     case 2:
-        text = `What a match! :fire: 
+        text = `*What a match! :fire: ${winner_score} to ${loser_score}*
 <@${winner}> won against <@${loser}>. Pure luck? Talent? Who knows :shrug: ...`
         break;
     case 3:
-        text = `Close one! :pinching_hand: 
+        text = `*Close one! :pinching_hand: ${winner_score} to ${loser_score}*
 <@${winner}> beat <@${loser}>. As the french say : "L'important c'est les 3 points" :flag-fr:"`   
         break;
     case 4:
-        text = `Boom! :bomb: 
+        text = `*Boom! :bomb: ${winner_score} to ${loser_score}*
 <@${winner}> owned <@${loser}>. 4 points ain't that much, but it's a clear win`   
         break;
     case 5:
-        text = `Well that was easy! :broom:
+        text = `*Well that was easy! :broom: ${winner_score} to ${loser_score}*
 <@${winner}> cleared <@${loser}> out of the room. Maybe you should try playing baby-foot? :baby-foot:`
         break;
     case 6:
-        text = `Clean! :sponge:
+        text = `*Clean! :sponge: ${winner_score} to ${loser_score}*
 <@${winner}> wiped the floor with <@${loser}>'s tears. :sob:`
         break;
     case 7:
-        text = `Ouch! :face_with_head_bandage:
+        text = `*Ouch! :face_with_head_bandage: ${winner_score} to ${loser_score}*
 <@${winner}> clearly won. <@${loser}> keep practicing (you loser :speak_no_evil:)`
         break;
     case 8:
-        text = `Burned! :melting_face:
+        text = `*Burned! :melting_face: ${winner_score} to ${loser_score}*
 <@${winner}> burned <@${loser}> to ashes. Someone call 911 :funeral_urn:`
         break;
     case 9:
-        text = `Vroom vroom! :tractor:
+        text = `*Vroom vroom! :tractor: ${winner_score} to ${loser_score}*
 <@${winner}> ran over <@${loser}>. Can he still get up? :pancakes:`
         break;
     case 10:
-        text = `Humiliated! :dotted_line_face:
+        text = `*Humiliated! :dotted_line_face: ${winner_score} to ${loser_score}*
 <@${winner}> destroyed <@${loser}>. Can someone from their team pick them up? :spoon: `
         break;
     case 11:
-        text = `Bubble time! :bubbles:
+        text = `*Bubble time! :bubbles: ${winner_score} to ${loser_score}*
 <@${winner}> ended <@${loser}>'s ping-pong career. You can drop your stuff at the HR dept :door::man-walking:`
         break;
     default:
         break;
     }
-
-    text += `
-<@${winner}> ${winner_score} - ${loser_score} <@${loser}>`;
-
-
     return{
         channel: channelId, 
         blocks: [
+        {
+            type: 'divider'
+        },
         {
             "type": "section",
             "text": {
