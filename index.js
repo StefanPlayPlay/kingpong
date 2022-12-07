@@ -3,7 +3,8 @@ let http = require('http')
 const bodyParser = require('body-parser');
 let dotenv =  require('dotenv');
 const modals = require('./modals')
-const messages = required('./messages.js')
+const messages = require('./messages.js')
+const ranking = require('./ranking.js')
 
 dotenv.config();
 
@@ -75,6 +76,8 @@ app.post('/interact', async (req, res) => {
             await slack.chat.postMessage(resultMessage);
             return res.json({});
         }
+        // Now we now result is accepted
+        // ranking.updateRanking()
 
         const resultMessage = messages.createResultMessageBulle('C04DX31AXD0',userA, userB, scoreA, scoreB)
         await slack.chat.postMessage(resultMessage);
