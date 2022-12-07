@@ -146,7 +146,11 @@ const createResultMessage = (channelId, userA, userB, scoreA, scoreB) => {
     default:
         break;
     }
-    
+
+    text += `
+<@${winner}> ${winner_score} - ${loser_score} <@${loser}>`;
+
+
     return{
         channel: channelId, 
         blocks: [
