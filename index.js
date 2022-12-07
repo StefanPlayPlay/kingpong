@@ -77,7 +77,10 @@ app.post('/interact', async (req, res) => {
             return res.json({});
         }
         // Now we now result is accepted
-        // ranking.updateRanking()
+        const winner = scoreA > scoreB ? userA : userB;
+        const looser = scoreA > scoreB ? userB : userA;
+
+        ranking.updateRanking(winner,looser);
 
         const resultMessage = messages.createResultMessageBulle('C04DX31AXD0',userA, userB, scoreA, scoreB)
         await slack.chat.postMessage(resultMessage);
