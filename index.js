@@ -82,7 +82,7 @@ app.post('/interact', async (req, res) => {
 
         ranking.updateRanking(winner,looser);
 
-        const resultMessage = messages.createResultMessageBulle('C04DX31AXD0',userA, userB, scoreA, scoreB)
+        const resultMessage = messages.createResultMessage('C04DX31AXD0',userA, userB, scoreA, scoreB)
         await slack.chat.postMessage(resultMessage);
         return res.status(200).send('Thanks :-)');
     }
