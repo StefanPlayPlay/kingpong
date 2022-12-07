@@ -19,7 +19,7 @@ const createConfirmMessage = (recipientId, docId, userA, userB, scoreA, scoreB) 
             },
             {
                 "name": "deny",
-                "text": "No, he's lying",
+                "text": "Bullshit",
                 "type": "button",
                 "value": docId
             }
