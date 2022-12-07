@@ -47,6 +47,7 @@ const gifs = {
         "https://media0.giphy.com/media/Mkrv6hMDj7kcM/giphy.gif", // Mortal Kombat fatality
         "https://i.imgur.com/CTBhMwg.gif", // I'm shaking bro
         "https://media.giphy.com/media/26DuYayysQxS8/giphy.gif", // Woman in shock
+        "https://i.imgur.com/qc5Qr8e.png", // Thibaut
     ],
     denied: ['https://media0.giphy.com/media/w97X9z4X3O4hi/giphy.gif'],
     cheater: [
