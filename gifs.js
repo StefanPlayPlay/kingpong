@@ -4,10 +4,12 @@ const gifs = {
         "https://media.giphy.com/media/2vs70gBAfQXvOOYsBI/giphy.gif",
     ],
     2: [
-        "https://i.imgur.com/Od9OtO0.gif",
+        "https://i.imgur.com/Od9OtO0.gif", // so close
+        "https://media3.giphy.com/media/mBvW6Hsr9tXRwnVycg/giphy.gif", // sweaty
     ],
     3: [
         "https://i.imgur.com/XPLATfK.gif",
+        "https://media4.giphy.com/media/TNOq5o37nNXX2/giphy.gif" // I'll see you soon
     ],
     4: [
         "https://i.imgur.com/LeZX32R.gif",
@@ -23,11 +25,12 @@ const gifs = {
     ],
     7: [
         "https://media.giphy.com/media/sxCKezAUq8yn6/giphy.gif",
-        "https://media1.giphy.com/media/lr7CTeBJJP3BC/giphy.gif" // he got game
+        "https://media1.giphy.com/media/lr7CTeBJJP3BC/giphy.gif", // he got game
     ],
     8: [
         "https://media.giphy.com/media/Oc4pSGTekXrtC/giphy.gif",
         "https://i.imgur.com/Oh7GXNJ.gif", // Destroy table
+        "https://media0.giphy.com/media/jQPmhOF7NXaWQ/giphy.gif", // I own you
     ],
     9: [
         "https://i.imgur.com/nEHwwmz.gif",
