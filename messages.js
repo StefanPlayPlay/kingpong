@@ -1,9 +1,13 @@
 const gifs = require('./gifs.js');
 
-
-const pickRandomGif = (key)=> {
-    const gifArray = gifs[key];
-    return gifArray[Math.floor(Math.random()*gifArray.length)]
+const pickRandomGif = (key) => {
+    try {
+        const gifArray = gifs[key];
+        return gifArray[Math.floor(Math.random()*gifArray.length)];
+    }
+    catch(err){
+        return "https://i.imgur.com/dFH9FSs.gif";
+    }
 }
 
 const createConfirmMessage = (recipientId, docId, userA, userB, scoreA, scoreB) => {
@@ -87,69 +91,57 @@ const createDenyMessage = (channelId, initiatorId, denierId, initiatorScore, den
 
 const createResultMessage = (channelId, userA, userB, scoreA, scoreB) => {
     let score_diff = Math.abs(scoreA-scoreB);
-    let gif_url = "https://i.imgur.com/dFH9FSs.gif";
-    let gif_alt_text = "Guy smashing and throwing the paddle";
+    let gif_url = pickRandomGif(score_diff);
     const winner = scoreA > scoreB ? userA : userB;
     const loser = scoreA > scoreB ? userB : userA;
     const winner_score = scoreA > scoreB ? scoreA : scoreB;
     const loser_score = scoreA > scoreB ? scoreB : scoreA;
+    let gif_alt_text = `${winner_score}-${loser_score}`;
     let text = `<@${winner}> just won ${winner_score}-${loser_score} against <@${loser}> :table_tennis_paddle_and_ball:`;
 
     switch(score_diff){
     case 1:
-        gif_url = pickRandomGif(1);
-        gif_alt_text = "How did you win by 1 point?"
-        text = `Fantastic! <@${winner}> won ${winner_score}-${loser_score} against <@${loser}> :table_tennis_paddle_and_ball:`
+        text = `How did you do that?`
         break; 
     case 2:
-        gif_url = pickRandomGif(2);
-        gif_alt_text = "It was sooooooo close"
-        text = `What a match! :fire: <@${winner}> won ${winner_score}-${loser_score} against <@${loser}>`
+        text = `What a match! :fire: 
+<@${winner}> won against <@${loser}>. Pure luck? Talent? Who knows :shrug: ...`
         break;
     case 3:
-        gif_url = pickRandomGif(3);
-        gif_alt_text = "Trick shot"
-        text = `Was it even challenging? <@${winner}> destroyed <@${loser}> ${winner_score}-${loser_score}`
+        text = `Close one! :pinching_hand: 
+<@${winner}> beat <@${loser}>. As the french say : "L'important c'est les 3 points" :flag-fr:"`   
         break;
     case 4:
-        gif_url = pickRandomGif(4);
-        gif_alt_text = "Game son"
-        text = `Game! :boom: <@${winner}> won ${winner_score}-${loser_score} against <@${loser}>`
+        text = `Boom! :bomb: 
+<@${winner}> owned <@${loser}>. 4 points ain't that much, but it's a clear win`   
         break;
     case 5:
-        gif_url = pickRandomGif(5);
-        gif_alt_text = "No, not even close"
-        text = `<@${winner}> won ${winner_score}-${loser_score} against <@${loser}>`
+        text = `Well that was easy! :broom:
+<@${winner}> cleared <@${loser}> out of the room. Maybe you should try playing baby-foot? :baby-foot:`
         break;
     case 6:
-        gif_url = pickRandomGif(6);
-        gif_alt_text = "No big deal"
-        text = `<@${winner}> defeated <@${loser}> on a ${winner_score}-${loser_score} score`
+        text = `Clean! :sponge:
+<@${winner}> wiped the floor with <@${loser}>'s tears. :sob:`
         break;
     case 7:
-        gif_url = pickRandomGif(7);
-        gif_alt_text = "Grandpa receives a ball in the face"
-        text = `Keep practicing <@${loser}> :muscle: <@${winner}> just beat you ${winner_score}-${loser_score}`
+        text = `Ouch! :face_with_head_bandage:
+<@${winner}> clearly won. <@${loser}> keep practicing (you loser :speak_no_evil:)`
         break;
     case 8:
-        gif_url = pickRandomGif(8);
-        gif_alt_text = "You just got kicked"
-        text = `<@${winner}> kicked <@${loser}> in a ${winner_score}-${loser_score} victory :martial_arts_uniform:`
+        text = `Burned! :melting_face:
+<@${winner}> burned <@${loser}> to ashes. Someone call 911 :funeral_urn:`
         break;
     case 9:
-        gif_url = pickRandomGif(9);
-        gif_alt_text = "Vivien rolling over Camille"
-        text = `Outch! :tractor: <@${winner}> rolled over <@${loser}> in a ${winner_score}-${loser_score} game`
+        text = `Vroom vroom! :tractor:
+<@${winner}> ran over <@${loser}>. Can he still get up? :pancakes:`
         break;
     case 10:
-        gif_url = pickRandomGif(10);
-        gif_alt_text = "Guy slaping the air"
-        text = `:leftwards_hand: <@${winner}> won ${winner_score}-${loser_score} against <@${loser}>`
+        text = `Humiliated! :dotted_line_face:
+<@${winner}> destroyed <@${loser}>. Can someone from their team pick them up? :spoon: `
         break;
     case 11:
-        gif_url = pickRandomGif(11);
-        gif_alt_text = "It's bubble time"
-        text = `Oh god! :see_no_evil: <@${winner}> just hit <@${loser}> with a bubble! Final score ${winner_score}-${loser_score}`
+        text = `Bubble time! :bubbles:
+<@${winner}> ended <@${loser}>'s ping-pong career. You can drop your stuff at the HR dept :door::man-walking:`
         break;
     default:
         break;
