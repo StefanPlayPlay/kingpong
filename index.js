@@ -80,7 +80,8 @@ app.post('/interact', async (req, res) => {
         const winner = scoreA > scoreB ? userA : userB;
         const looser = scoreA > scoreB ? userB : userA;
 
-        ranking.updateRanking(winner,looser);
+        // Enable this in PROD !!!
+        // ranking.updateRanking(winner,looser);
 
         const resultMessage = messages.createResultMessage('C04DX31AXD0',userA, userB, scoreA, scoreB)
         await slack.chat.postMessage(resultMessage);
