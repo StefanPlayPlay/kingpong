@@ -36,4 +36,4 @@ const gifs = {
     cheater: ['https://media0.giphy.com/media/vX9WcCiWwUF7G/giphy.gif'],
 };
 
-module.exports = gifs
+module.exports = gifs;
