@@ -9,6 +9,7 @@ const gifs = {
     ],
     3: [
         "https://i.imgur.com/XPLATfK.gif",
+        "https://i.imgur.com/xUghxrs.gif", // Le flambeau tennis
     ],
     4: [
         "https://i.imgur.com/LeZX32R.gif",
