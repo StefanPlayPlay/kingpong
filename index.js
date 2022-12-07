@@ -84,7 +84,9 @@ app.post('/interact', async (req, res) => {
         if(hasDenied){  
             const deniedMessage = messages.createDenyMessage('C04DX31AXD0',userA,userB,scoreA,scoreB);
             await slack.chat.postMessage(deniedMessage);
-            return res.json({});
+            const confirmKoMessage = messages.createConfirmKoMessage(userA, userB, scoreA, scoreB)
+            return res.status(200).send(confirmKoMessage);
+
         }
         // Now we now result is accepted
         const winner = scoreA > scoreB ? userA : userB;
@@ -93,9 +95,13 @@ app.post('/interact', async (req, res) => {
         // Enable this in PROD !!!
         // ranking.updateRanking(winner,looser);
 
+        // Message sent on the public channel
         const resultMessage = messages.createResultMessage('C04DX31AXD0',userA, userB, scoreA, scoreB)
         await slack.chat.postMessage(resultMessage);
-        return res.status(200).send(':ok_hand:');
+
+        // Response to the confirmation (MP)
+        const confirmOkMessage = messages.createConfirmOkMessage(userA, userB, scoreA, scoreB)
+        return res.status(200).send(confirmOkMessage);
     }
 
     return res.json({});

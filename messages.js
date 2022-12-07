@@ -29,6 +29,16 @@ const createConfirmMessage = (recipientId, docId, userA, userB, scoreA, scoreB) 
     };
 }
 
+const createConfirmOkMessage = (userA, userB, scoreA, scoreB) => {
+    const text = `You approved the following result : <@${userA}>(${scoreA}) - <@${userB}>(${scoreB})`;
+    return text;
+}
+
+const createConfirmKoMessage = (userA, userB, scoreA, scoreB) => {
+    const text = `You denied the following result : <@${userA}>(${scoreA}) - <@${userB}>(${scoreB})`;
+    return text;
+}
+
 const createCheaterMessage = (channelId, cheaterId) => {
     return{
         channel: channelId, 
@@ -168,6 +178,8 @@ const createResultMessage = (channelId, userA, userB, scoreA, scoreB) => {
 modules.exports = {
     createCheaterMessage,
     createConfirmMessage,
+    createConfirmOkMessage,
+    createConfirmKoMessage,
     createDenyMessage,
     createResultMessage
 }
