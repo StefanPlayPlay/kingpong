@@ -18,7 +18,7 @@ const createConfirmMessage = (recipientId, docId, userA, userB, scoreA, scoreB) 
                     },
                     {
                         "name": "deny",
-                        "text": "No, he's lying",
+                        "text": "No, he's a liar",
                         "type": "button",
                         "value": docId
                     }
@@ -28,9 +28,9 @@ const createConfirmMessage = (recipientId, docId, userA, userB, scoreA, scoreB) 
     };
 }
 
-const createCheaterMessage = (recipientId) => { 
+const createCheaterMessage = (recipientId) => {
     return{
-        channel: recipientId, 
+        channel: recipientId,
         blocks: [
             {
                 "type": "section",
@@ -38,13 +38,13 @@ const createCheaterMessage = (recipientId) => { 
                     "type": "mrkdwn",
                     "text": `You filthy cheater`
                 }
-            }, 
+            },
             {
                 "type": "image",
                 "image_url": "https://media2.giphy.com/media/3o6ZtdRTmf7f0Ug0Eg/giphy.gif",
                 "alt_text": "Bubble"
             }
-        ]     
+        ]
     };
 }
 
@@ -54,15 +54,27 @@ const createResultMessage = (channelId, userA, userB, scoreA, scoreB) => {
         channel: channelId,
         text: text
     };
-}
+};
 
 const createResultMessageBulle = (channelId, userA, userB, scoreA, scoreB) => {
+    let score_diff = Math.abs(scoreA-scoreB);
+    let gif_url = "";
+    switch(score_diff){
+        case 1:
+            gif_url = "https://media.giphy.com/media/leH08nNU11M6zJrqNz/giphy.gif"
+            break;
+        case 2:
+            gif_url = "https://media.giphy.com/media/3oKIPf3C7HqqYBVcCk/giphy.gif"
+            break;
+        default:
+            break;
+    }
     let text = `<@${userA}> just won ${scoreA}-${scoreB} against <@${userB}> :melting_face:`;
     if (scoreB > scoreA) {
         text = `<@${userB}> just won ${scoreB}-${scoreA} against <@${userA}> :melting_face:`;
     }
     return{
-        channel: channelId, 
+        channel: channelId,
         blocks: [
             {
                 "type": "section",
@@ -70,26 +82,20 @@ const createResultMessageBulle = (channelId, userA, userB, scoreA, scoreB) => {
                     "type": "mrkdwn",
                     "text": text
                 }
-            }, 
+            },
             {
                 "type": "image",
-                "title": {
-                    "type": "plain_text",
-                    "text": "It's bubble time",
-                    "emoji": true
-                },
-                "image_url": "https://media.giphy.com/media/9QmldqOBxeBZC/giphy.gif",
-                "alt_text": "Bubble"
+                "image_url": gif_url,
+                "alt_text": 'funny gif'
             }
-        ]   
+        ]
     };
 }
 
 
-
-modules.exports = {
-    createCheaterMessage,
+module.exports = {
     createConfirmMessage,
-    createResultMessage, 
+    createCheaterMessage,
+    createResultMessage,
     createResultMessageBulle
-}
+};

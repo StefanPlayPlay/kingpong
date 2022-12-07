@@ -1,3 +1,4 @@
-/node_modules
-.env
-prodcode.js
+*-debug.log
+functions/node_modules
+functions/.env
+functions/package-lock.json
