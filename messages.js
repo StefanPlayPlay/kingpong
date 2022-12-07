@@ -53,9 +53,9 @@ const createResultMessage = (channelId, userA, userB, scoreA, scoreB) => {
     let gif_url = "https://imgur.com/dFH9FSs";
     let gif_alt_text = "Guy smashing and throwing the paddle";
     const winner = scoreA > scoreB ? userA : userB;
-    const loser = scoreA < scoreB ? userB : userA;
+    const loser = scoreA > scoreB ? userB : userA;
     const winner_score = scoreA > scoreB ? scoreA : scoreB;
-    const loser_score = scoreA < scoreB ? scoreB : scoreA;
+    const loser_score = scoreA > scoreB ? scoreB : scoreA;
     let text = `<@${winner}> just won ${winner_score}-${loser_score} against <@${loser}> :table_tennis_paddle_and_ball:`;
 
     switch(score_diff){
