@@ -36,11 +36,22 @@ app.post('/interact', async (req, res) => {
         const scoreA = parseInt(data.view.state.values.user_a_score.user_a_score_value.value, 10);
         const scoreB = parseInt(data.view.state.values.user_b_score.user_b_score_value.value, 10);
 
+        const scoreDiff = Math.abs(scoreA - scoreB);
+
         if (scoreA === scoreB) {
             return res.json({
                 "response_action": "errors",
                 "errors": {
                     "user_b_score": "The two scores can't be the same.",
+                }
+            });
+        }
+
+        if(scoreDiff === 1){
+            return res.json({
+                "response_action": "errors",
+                "errors": {
+                    "user_b_score": "You can only win by a 2 point difference !",
                 }
             });
         }
