@@ -1,4 +1,5 @@
 const gifs = {
+    // 1 point of difference
     1: [
         "https://media.giphy.com/media/2vs70gBAfQXvOOYsBI/giphy.gif",
     ],
@@ -6,7 +7,7 @@ const gifs = {
         "https://i.imgur.com/Od9OtO0.gif",
     ],
     3: [
-        "https://i.imgur.com/E1T82Vq.gif",
+        "https://i.imgur.com/XPLATfK.gif",
     ],
     4: [
         "https://i.imgur.com/LeZX32R.gif",
