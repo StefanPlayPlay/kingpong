@@ -41,6 +41,7 @@ const gifs = {
         "https://media.giphy.com/media/l2JJod66TKus2t3QA/giphy.gif",
         "https://i.imgur.com/4YafJbJ.gif", // Eating butt
         "https://i.imgur.com/xSl6rgJ.gif" // Slapping butt
+        "https://i.imgur.com/sEEVtam.gif" // Super sayan tony
     ],
     11: [
         "https://media.giphy.com/media/9QmldqOBxeBZC/giphy.gif",
