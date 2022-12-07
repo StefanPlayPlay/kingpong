@@ -18,6 +18,7 @@ const gifs = {
     5: [
         "https://i.giphy.com/media/hQSkQm41brwdYDIGqr/giphy.webp",
         "https://i.imgur.com/HRDjDUY.gif", // Etchebest baffe
+        "https://i.imgur.com/AL5l3pT.gif", // Dance
     ],
     6: [
         "https://i.imgur.com/z0mssC3.gif",
