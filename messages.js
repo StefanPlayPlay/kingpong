@@ -65,29 +65,29 @@ const createResultMessage = (channelId, userA, userB, scoreA, scoreB) => {
         text = `Fantastic! <@${winner}> won ${winner_score}-${loser_score} against <@${loser}> :table_tennis_paddle_and_ball:`
         break; 
     case 2:
-        gif_url = "https://media.giphy.com/media/dMyMc3bF4FF9m/giphy.gif"
-        gif_alt_text = "Mourinho is proud of you"
-        text = `What a match! :scream: <@${winner}> won ${winner_score}-${loser_score} against <@${loser}>`
+        gif_url = "https://i.imgur.com/Od9OtO0.gif"
+        gif_alt_text = "It was sooooooo close"
+        text = `What a match! :fire: <@${winner}> won ${winner_score}-${loser_score} against <@${loser}>`
         break;
     case 3:
-        gif_url = "https://i.imgur.com/058BuSm.gif"
+        gif_url = "https://i.imgur.com/E1T82Vq.gif"
         gif_alt_text = "Trick shot"
-        text = `Whoop whoop :dancingcorgi: <@${winner}> won ${winner_score}-${loser_score} against <@${loser}>`
+        text = `Was it even challenging? <@${winner}> destroyed <@${loser}> ${winner_score}-${loser_score}`
         break;
     case 4:
-        gif_url = "https://i.imgur.com/htcUmNM.gif"
-        gif_alt_text = "Simple math"
-        text = `Game! :abacus: <@${winner}> won ${winner_score}-${loser_score} against <@${loser}>`
+        gif_url = "https://i.imgur.com/LeZX32R.gif"
+        gif_alt_text = "Game son"
+        text = `Game! :boom: <@${winner}> won ${winner_score}-${loser_score} against <@${loser}>`
         break;
     case 5:
-        gif_url = "https://media.giphy.com/media/l2JJod66TKus2t3QA/giphy.gif"
-        gif_alt_text = "Guy slaping the air"
-        text = `:leftwards_hands: <@${winner}> won ${winner_score}-${loser_score} against <@${loser}>`
+        gif_url = "https://i.giphy.com/media/hQSkQm41brwdYDIGqr/giphy.webp"
+        gif_alt_text = "No, not even close"
+        text = `<@${winner}> won ${winner_score}-${loser_score} against <@${loser}>`
         break;
     case 6:
-        gif_url = "https://i.imgur.com/GN3vrDG.gif"
-        gif_alt_text = "It's average, let's be honest"
-        text = `A fair match won by <@${winner}> against <@${loser}> with a ${winner_score}-${loser_score} score`
+        gif_url = "https://i.imgur.com/z0mssC3.gif"
+        gif_alt_text = "No big deal"
+        text = `<@${winner}> defeated <@${loser}> on a ${winner_score}-${loser_score} score`
         break;
     case 7:
         gif_url = "https://media.giphy.com/media/sxCKezAUq8yn6/giphy.gif"
@@ -105,9 +105,9 @@ const createResultMessage = (channelId, userA, userB, scoreA, scoreB) => {
         text = `Outch! :tractor: <@${winner}> rolled over <@${loser}> in a ${winner_score}-${loser_score} game`
         break;
     case 10:
-        gif_url = "https://i.imgur.com/Ez8J0f5.gif"
-        gif_alt_text = "No risk at all"
-        text = `Damn! <@${winner}> won ${winner_score}-${loser_score} against <@${loser}>`
+        gif_url = "https://media.giphy.com/media/l2JJod66TKus2t3QA/giphy.gif"
+        gif_alt_text = "Guy slaping the air"
+        text = `:leftwards_hand: <@${winner}> won ${winner_score}-${loser_score} against <@${loser}>`
         break;
     case 11:
         gif_url = "https://media.giphy.com/media/9QmldqOBxeBZC/giphy.gif"
