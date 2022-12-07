@@ -8,7 +8,7 @@ const updateRanking = (winner, looser)=>{
     const updatedWinnerRating = elo.newRatingIfWon(winnerCurrentRating,looserCurrentRating);
     const updatedLooserRating = elo.newRatingIfLost(looserCurrentRating, winnerCurrentRating);
     console.log(`winner went from ${winnerCurrentRating} to ${updatedWinnerRating}`),
-    console.log(`winner went from ${looserCurrentRating} to ${updatedLooserRating}`);
+    console.log(`looser went from ${looserCurrentRating} to ${updatedLooserRating}`);
 }
 
 module.exports = {
