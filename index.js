@@ -57,7 +57,7 @@ app.post('/interact', async (req, res) => {
         }
 
         if(userA === userB){
-            const cheaterMessage = messages.createCheaterMessage('C04DX31AXD0', userA);
+            const cheaterMessage = messages.createCheaterMessage('C04E584TL82', userA);
             await slack.chat.postMessage(cheaterMessage);
             return res.json({});
         }
@@ -82,7 +82,7 @@ app.post('/interact', async (req, res) => {
         const scoreB = '6';
 
         if(hasDenied){  
-            const deniedMessage = messages.createDenyMessage('C04DX31AXD0',userA,userB,scoreA,scoreB);
+            const deniedMessage = messages.createDenyMessage('C04E584TL82',userA,userB,scoreA,scoreB);
             await slack.chat.postMessage(deniedMessage);
             const confirmKoMessage = messages.createConfirmKoMessage(userA, userB, scoreA, scoreB)
             return res.status(200).send(confirmKoMessage);
@@ -96,7 +96,7 @@ app.post('/interact', async (req, res) => {
         // ranking.updateRanking(winner,looser);
 
         // Message sent on the public channel
-        const resultMessage = messages.createResultMessage('C04DX31AXD0',userA, userB, scoreA, scoreB)
+        const resultMessage = messages.createResultMessage('C04E584TL82',userA, userB, scoreA, scoreB)
         await slack.chat.postMessage(resultMessage);
 
         // Response to the confirmation (MP)
